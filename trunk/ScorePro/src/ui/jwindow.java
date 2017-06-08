@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -32,6 +33,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
+
+import dao.StudentScoreDao;
+import dao.impl.StudentScore;
+import entity.Student;
 
 public class jwindow extends JFrame{
 	/**
@@ -63,7 +68,7 @@ public class jwindow extends JFrame{
 	JButton card4_button0=new JButton("修改");
 	JButton card5_button0=new JButton("删除");
 	JTextField card5_text0=new JTextField("请输入学生学号");
-	JFileChooser jfc=new JFileChooser("C:/Users/jiaqing/Desktop");
+	public static JFileChooser jfc=new JFileChooser("C:/Users/jiaqing/Desktop");
 	JMenuBar menubar=new JMenuBar();
 	JMenu menu=new JMenu("查询统计");
 	JMenu menu1=new JMenu("排序");
@@ -76,8 +81,8 @@ public class jwindow extends JFrame{
 	JMenuItem menu2_item2=new JMenuItem("修改学生数据");
 	JMenuItem menu2_item3=new JMenuItem("删除学生数据");
 	JTextField text=new JTextField();
-	JTextField text1=new JTextField();
-	String clos[]={"学号","姓名","课程","成绩"};
+    public static JTextField text1=new JTextField();
+	Vector<String> clos=new Vector<String>();
 	JTable table=new JTable();
     JScrollPane jsp=new JScrollPane(table);
     CardLayout cardlayout=new CardLayout();
@@ -85,6 +90,10 @@ public class jwindow extends JFrame{
     {
     	
     	this.getContentPane().setBackground(Color.gray.brighter());
+    	clos.add("姓名");
+    	clos.add("学号");
+    	clos.add("课名");
+    	clos.add("成绩");
     	button.addActionListener(new ActionListener() {
 			
 			@Override
@@ -228,6 +237,7 @@ public class jwindow extends JFrame{
     	menu.add(menu_item3);
     	menu_item1.addActionListener(new mylistener());
     	menu_item2.addActionListener(new mylistener());
+    	menu_item3.addActionListener(new mylistener());
     	menu1_item1.addActionListener(new mylistener());
     	menu2_item1.addActionListener(new mylistener());
     	menu2_item2.addActionListener(new mylistener());
@@ -313,6 +323,25 @@ public class jwindow extends JFrame{
 			{
 				cardlayout.show(dataalertpanel,"5");
 				card5_text0.setText("请输入学生学号");
+			}else if(e.getSource().equals(menu_item3))
+			{
+				StudentScoreDao sdao=new StudentScore();
+				ArrayList<Student> list=(ArrayList<Student>) sdao.findAllStudents();
+				Vector<Vector<String>> data=new Vector<Vector<String>>();
+				for(int i=0;i<list.size();i++)
+				{
+					Vector<String> v=new Vector<String>();
+					v.add(list.get(i).getName());
+					v.add(list.get(i).getId());
+					v.add(list.get(i).getScore_name());
+					v.add(list.get(i).getScore());
+					data.addElement(v);
+				}
+				DefaultTableModel model=new DefaultTableModel();
+				model.setColumnCount(4);
+				model.setRowCount(list.size());
+				model.setDataVector(data, clos);
+				table.setModel(model);
 			}
 		}
     	

@@ -4,7 +4,7 @@ public class Student {
        private String Id;
        private String name;
        private String score_name;
-       private double score;
+       private String score;
 	public String getId() {
 		return Id;
 	}
@@ -23,13 +23,13 @@ public class Student {
 	public void setScore_name(String score_name) {
 		this.score_name = score_name;
 	}
-	public double getScore() {
+	public String getScore() {
 		return score;
 	}
-	public void setScore(double score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
-	public Student(String id, String name, String score_name, double score) {
+	public Student(String id, String name, String score_name, String score) {
 		super();
 		Id = id;
 		this.name = name;
