@@ -19,7 +19,7 @@ public interface StudentService {
         * @return 返回值为已排好序的学生集
         */
   
-       public Set<Student> ServiceOrderByscore(List<Student> students);
+       public List<Student> ServiceOrderByscore(List<Student> students);
        /**
         * 该方法用于按学号查找某一条学生数据
         * @param Id为传入的学号信息

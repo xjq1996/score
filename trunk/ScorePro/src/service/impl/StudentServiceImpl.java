@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public Set<Student> ServiceOrderByscore(List<Student> students) {
+	public List<Student> ServiceOrderByscore(List<Student> students) {
 		StudentScoreDao studentdao=new StudentScore();
 		return studentdao.OrderByscore(students);
 	}

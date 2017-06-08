@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -19,9 +21,10 @@ public class StudentScore implements StudentScoreDao{
 	public List<Student> findAllStudents() {
 		// TODO Auto-generated method stub
 		FileSettle fs=FileSettle.getInstance();
-		File f=new File(jwindow.jfc.getSelectedFile().getAbsolutePath());
+		File f;
+			f = new File(jwindow.jfc.getSelectedFile().getAbsolutePath());
 		List<Student> students=new ArrayList<Student>();
-		if(f.exists())
+		if(f.exists()&&jwindow.jfc.getSelectedFile().getAbsolutePath()!=null)
 		{
 			String s;
 			BufferedReader reader=(BufferedReader) fs.getreader(f);
@@ -44,9 +47,17 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
-	public Set<Student> OrderByscore(List<Student> students) {
+	public List<Student> OrderByscore(List<Student> students) {
 		// TODO Auto-generated method stub
-		return null;
+	    students.sort(new Comparator<Student>() {
+
+			@Override
+			public int compare(Student o1, Student o2) {
+				// TODO Auto-generated method stub
+				return Integer.parseInt(o1.getId())-Integer.parseInt(o2.getId());
+			}
+		});
+	    return students;
 	}
 
 	@Override

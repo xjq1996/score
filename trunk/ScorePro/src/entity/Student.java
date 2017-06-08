@@ -1,6 +1,6 @@
 package entity;
 
-public class Student {
+public class Student{
        private String Id;
        private String name;
        private String score_name;
