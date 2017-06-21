@@ -17,7 +17,7 @@ public interface StudentScoreDao {
 	 * @param dir 参数为数据源路径
 	 * @return
 	 */
-	  public File InsertData(String dir);
+	  public void InsertData(String dir,Student st);
 	/**
 	 * 该方法用于查找所有学生信息
 	 * @return List<Student>为返回的一个结果集
@@ -29,7 +29,7 @@ public interface StudentScoreDao {
         * @return 返回值为已排好序的学生集
         */
   
-       public List<Student> OrderByscore(List<Student> students);
+       public List<Student> OrderByscore(List<Student> students,String pk,String rule);
        /**
         * 该方法用于按学号查找某一条学生数据
         * @param Id为传入的学号信息
@@ -42,10 +42,16 @@ public interface StudentScoreDao {
         * @param score2 成绩上限
         * @return 返回查找的结果集
         */
-       public List<Student> findByscore(double score1,double score2);
+       public List<Student> findByscore(int score1,int score2);
        /**
         * 该方法用于修改某个学生的信息
-        * @param Id
+        * @param stu
         */
-       public void updateStudent(String Id);
+       public void updateStudent(Student stu);
+       /**
+        * 该方法用于删除特定的某个学生记录
+        * @param id
+        * @return
+        */
+       public void deleteStudent(String id);
 }

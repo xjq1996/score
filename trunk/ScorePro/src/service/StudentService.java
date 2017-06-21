@@ -7,7 +7,7 @@ import java.util.Set;
 import entity.Student;
 
 public interface StudentService {
-	   public File ServiceInsertData(String dir);
+	   public void ServiceInsertData(String dir,Student stu);
 	/**
 	 * 该方法用于查找所有学生信息
 	 * @return List<Student>为返回的一个结果集
@@ -19,7 +19,7 @@ public interface StudentService {
         * @return 返回值为已排好序的学生集
         */
   
-       public List<Student> ServiceOrderByscore(List<Student> students);
+       public List<Student> ServiceOrderByscore(List<Student> students,String pk,String rule);
        /**
         * 该方法用于按学号查找某一条学生数据
         * @param Id为传入的学号信息
@@ -32,10 +32,16 @@ public interface StudentService {
         * @param score2 成绩上限
         * @return 返回查找的结果集
         */
-       public List<Student> ServicefindByscore(double score1,double score2);
+       public List<Student> ServicefindByscore(int score1,int score2);
        /**
         * 该方法用于修改某个学生的信息
         * @param Id
         */
-       public void ServiceupdateStudent(String Id);
+       public void ServiceupdateStudent(Student stu);
+       /**
+        * 根据id学号删除学生记录
+        * @param id
+        * @return
+        */
+       public void Servicedelete(String id);
 }

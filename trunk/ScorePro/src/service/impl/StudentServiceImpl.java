@@ -12,9 +12,9 @@ import service.StudentService;
 public class StudentServiceImpl implements StudentService{
 
 	@Override
-	public File ServiceInsertData(String dir) {
+	public void ServiceInsertData(String dir,Student stu) {
 		StudentScoreDao studentdao=new StudentScore();
-		return studentdao.InsertData(dir);
+		studentdao.InsertData(dir,stu);
 	}
 
 	@Override
@@ -24,9 +24,9 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public List<Student> ServiceOrderByscore(List<Student> students) {
+	public List<Student> ServiceOrderByscore(List<Student> students,String pk,String rule) {
 		StudentScoreDao studentdao=new StudentScore();
-		return studentdao.OrderByscore(students);
+		return studentdao.OrderByscore(students,pk,rule);
 	}
 
 	@Override
@@ -36,16 +36,23 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public List<Student> ServicefindByscore(double score1, double score2) {
+	public List<Student> ServicefindByscore(int score1,int score2) {
 		StudentScoreDao studentdao=new StudentScore();
 		return studentdao.findByscore(score1, score2);
 	}
 
 	@Override
-	public void ServiceupdateStudent(String Id) {
+	public void ServiceupdateStudent(Student stu) {
 		StudentScoreDao studentdao=new StudentScore();
-		studentdao.updateStudent(Id);
+		studentdao.updateStudent(stu);
 		
+	}
+
+	@Override
+	public void Servicedelete(String id) {
+		// TODO Auto-generated method stub
+		StudentScoreDao studentdao=new StudentScore();
+		studentdao.deleteStudent(id);
 	}
 
 	
