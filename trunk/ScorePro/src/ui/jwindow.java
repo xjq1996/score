@@ -189,6 +189,7 @@ public class jwindow extends JFrame{
 				card0_text0.setText("");
 			}
 		});
+    	//添加获取焦点的监听事件
     	card4_text[0].addFocusListener(new FocusListener() {
 			
 			@Override
@@ -253,7 +254,6 @@ public class jwindow extends JFrame{
     	dataalertpanel.setBorder(BorderFactory.createLineBorder(Color.gray,1));
     	title2.setBounds(5,200,80,20);
     	dataalertpanel.setBounds(5,230,370,185);
-    	//
     	title1.setBounds(5,40,80,20);
     	datachoosepanel.setBounds(5,60,370,130);
     	datachoosepanel.setBorder(BorderFactory.createLineBorder(Color.gray,1));
@@ -267,7 +267,6 @@ public class jwindow extends JFrame{
     	button1.setBounds(210,80, 110, 30);
     	text.setBounds(5, 20, 200, 30);
     	text1.setBounds(5, 80,200,30);
-    	//
     	menu.add(menu_item1);
     	menu.add(menu_item2);
     	menu.add(menu_item3);
@@ -292,7 +291,6 @@ public class jwindow extends JFrame{
     	menubar.add(menu1);
     	menubar.add(menu2);
     	menubar.setBounds(0,0,800,20);
-    	//
     	DefaultTableModel model=new DefaultTableModel(clos,0);
     	table.setModel(model);
     	table.setCellSelectionEnabled(false);
@@ -514,6 +512,11 @@ public class jwindow extends JFrame{
 		}
     	
     }
+    /**
+     * 将list转化为二维向量，对应规则二维表显示
+     * @param list
+     * @return
+     */
     public static Vector<Vector<String>> ListToVector(List<Student> list)
     {
 		Vector<Vector<String>> data=new Vector<Vector<String>>();
@@ -524,12 +527,9 @@ public class jwindow extends JFrame{
 			v.add(list.get(i).getId());
 			v.add(list.get(i).getScore_name());
 			v.add(list.get(i).getScore()+"");
-			data.addElement(v);
+            data.addElement(v);
 		}
 		return data;
-    }
-    public static void main(String[] args) {
-		new jwindow();
-	}
+     }
 }
 

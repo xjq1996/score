@@ -19,12 +19,14 @@ import util.FileSettle;
 public class StudentScore implements StudentScoreDao{
 
 	@Override
+	//显示所有学生记录
 	public List<Student> findAllStudents() {
-		// TODO Auto-generated method stub
+		// 文件读取工具类，单例模式
 		FileSettle fs=FileSettle.getInstance();
 		File f;
 			f = new File(jwindow.jfc.getSelectedFile().getAbsolutePath());
 		List<Student> students=new ArrayList<Student>();
+		//从文本文件里读取数据，存入list集合中
 		if(f.exists()&&jwindow.jfc.getSelectedFile().getAbsolutePath()!=null)
 		{
 			String s;
@@ -51,7 +53,7 @@ public class StudentScore implements StudentScoreDao{
 
 	@Override
 	public List<Student> OrderByscore(List<Student> students,String pk,String rule) {
-		// TODO Auto-generated method stub
+		// 利用Comparator排序器对student进行排序
 		if(pk.equals("按成绩排序")&&rule.equals("升序排序"))
 	    {
 			students.sort(new Comparator<Student>() {
@@ -104,6 +106,7 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
+	//查找学生
 	public Student findById(String Id) {
 		// TODO Auto-generated method stub
 		List<Student> students=findAllStudents();
@@ -125,6 +128,7 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
+	//按成绩段统计
 	public List<Student> findByscore(int score1,int score2) {
 		// TODO Auto-generated method stub
 		List<Student> students=findAllStudents();
@@ -140,6 +144,7 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
+	//更新学生数据
 	public void updateStudent(Student stu) {
 		// TODO Auto-generated method stub
 		ArrayList<Student> stus=new ArrayList<Student>();
@@ -157,6 +162,7 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
+	//插入学生数据
 	public void InsertData(String dir,Student stu) {
 		// TODO Auto-generated method stub
 		 File f=new File(dir);
@@ -180,6 +186,7 @@ public class StudentScore implements StudentScoreDao{
 	}
 
 	@Override
+	//删除学生数据
 	public void deleteStudent(String id) {
 		// TODO Auto-generated method stub
 		ArrayList<Student> stus=new ArrayList<Student>();

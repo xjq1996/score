@@ -1,5 +1,9 @@
 package entity;
-
+/**
+ * 学生实体类
+ * @author jiaqing
+ *
+ */
 public class Student{
        /* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -30,10 +34,10 @@ public class Student{
 			return false;
 		return true;
 	}
-	private String Id;
-       private String name;
-       private String score_name;
-       private int score;
+	   private String Id;//学号
+       private String name;//姓名
+       private String score_name;//课程名
+       private int score;//分数
 	public String getId() {
 		return Id;
 	}

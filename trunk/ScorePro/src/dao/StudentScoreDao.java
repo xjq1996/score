@@ -45,12 +45,12 @@ public interface StudentScoreDao {
        public List<Student> findByscore(int score1,int score2);
        /**
         * 该方法用于修改某个学生的信息
-        * @param stu
+        * @param stu 修改后的学生实例
         */
        public void updateStudent(Student stu);
        /**
         * 该方法用于删除特定的某个学生记录
-        * @param id
+        * @param id 学号
         * @return
         */
        public void deleteStudent(String id);
