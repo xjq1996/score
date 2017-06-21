@@ -45,7 +45,7 @@ import service.StudentService;
 import service.impl.StudentServiceImpl;
 
 public class jwindow extends JFrame{
-	/**
+	/*
 	 * 定义以下组件
 	 */
 	private static final long serialVersionUID = 2213197723422739858L;
